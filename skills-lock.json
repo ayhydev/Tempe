@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "skills": {
+    "conventional-branch": {
+      "source": "conventional-branch/conventional-branch",
+      "sourceType": "github",
+      "skillPath": "skills/conventional-branch/SKILL.md",
+      "computedHash": "c9c1dbf791f3ca1fc0b2e13ebb97c80e70c152cae3526783bc00c6e0e5f6ae91"
+    }
+  }
+}

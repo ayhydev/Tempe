@@ -1,7 +1,7 @@
 function NewsCard({ title, description, url, imageUrl }) {
   return (
     <article className="news-card">
-      <h4>Judul: {title}</h4>
+      <h3>Judul: {title}</h3>
       <p>Deskripsi: {description}</p>
     </article>
   );

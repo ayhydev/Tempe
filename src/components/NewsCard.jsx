@@ -1,8 +1,12 @@
 function NewsCard({ title, description, url, imageUrl }) {
   return (
-    <article className="news-card">
-      <h3>Judul: {title}</h3>
-      <p>Deskripsi: {description}</p>
+    <article>
+      <h3>
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          {title}
+        </a>
+      </h3>
+      <p>{description}</p>
     </article>
   );
 }

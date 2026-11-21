@@ -11,6 +11,7 @@ function Home() {
         <NewsCard
           title="Contoh judul misalnya"
           description="Ini contoh deskripsi"
+          url="https://example.com/news"
         />
       </section>
     </main>

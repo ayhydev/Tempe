@@ -1,21 +1,43 @@
 import NewsGrid from "../components/NewsGrid.jsx";
-import MockNewsData from "../data/mockNews.js";
-import { useState } from "react";
+import getNews from "../services/newsApi.js";
+import { useState, useEffect } from "react";
 
 function Home({ bookmarks, onBookmarkClick }) {
   const [kategori, setKategori] = useState("semua");
 
   const [pencarian, setPencarian] = useState("");
 
-  const hasilBerita = MockNewsData.filter((berita) => {
-    const cekJudul = berita.title
-      .toLowerCase()
-      .includes(pencarian.toLowerCase());
+  const [berita, setBerita] = useState([]);
 
-    const cekKategori = kategori === "semua" || berita.category === kategori;
+  const [loading, setLoading] = useState(true);
 
-    return cekJudul && cekKategori;
-  });
+  const [isFetchSuccess, setIsFetchSuccess] = useState(false);
+
+  useEffect(() => {
+    let aktif = true;
+
+    async function muatBerita() {
+      setLoading(true);
+
+      const hasil = await getNews(kategori);
+
+      if (aktif) {
+        setBerita(hasil.articles);
+        setIsFetchSuccess(hasil.isFetchSuccess);
+        setLoading(false);
+      }
+    }
+
+    muatBerita();
+
+    return () => {
+      aktif = false;
+    };
+  }, [kategori]);
+
+  const hasilBerita = berita.filter((item) =>
+    item.title.toLowerCase().includes(pencarian.toLowerCase()),
+  );
 
   return (
     <main>
@@ -23,6 +45,7 @@ function Home({ bookmarks, onBookmarkClick }) {
 
       <section>
         <h2 id="news-title">Berita Terbaru</h2>
+
         <label htmlFor="search">Cari Berita:</label>
         <input
           type="text"
@@ -45,13 +68,21 @@ function Home({ bookmarks, onBookmarkClick }) {
           <option value="entertainment">Entertainment</option>
         </select>
 
-        <NewsGrid
-          articles={hasilBerita}
-          bookmarks={bookmarks}
-          onBookmarkClick={onBookmarkClick}
-        />
+        {loading ? (
+          <p>Memuat berita...</p>
+        ) : (
+          <>
+            {!isFetchSuccess && <p>Data demo — API belum tersedia.</p>}
 
-        {hasilBerita.length === 0 && <p>Berita tidak ditemukan.</p>}
+            <NewsGrid
+              articles={hasilBerita}
+              bookmarks={bookmarks}
+              onBookmarkClick={onBookmarkClick}
+            />
+
+            {hasilBerita.length === 0 && <p>Berita tidak ditemukan.</p>}
+          </>
+        )}
       </section>
     </main>
   );

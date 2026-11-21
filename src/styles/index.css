@@ -1,23 +1,123 @@
-:root {
-  --background: #ffffff;
-  --text: #222222;
-  --link: #b51226;
+* {
+  box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: var(--background);
-  color: var(--text);
+header,
+main,
+footer {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-a {
-  color: var(--link);
+header {
+  padding: 20px 0;
+  border-bottom: 3px solid #b51226;
 }
 
-button,
+header > p {
+  margin: 0 0 16px;
+  color: #b51226;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+main {
+  padding: 24px 0;
+}
+
+input,
+select,
+button {
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
 input,
 select {
-  font: inherit;
+  max-width: 100%;
+  margin: 8px 12px 16px 0;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.news-grid article {
+  padding: 16px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+
+.news-grid h3 {
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+.news-grid h3 a {
+  color: #222222;
+  text-decoration: none;
+}
+
+.news-grid h3 a:hover {
+  text-decoration: underline;
+}
+
+.news-grid p {
+  line-height: 1.6;
+}
+
+.news-grid img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+
+button {
+  cursor: pointer;
+  background-color: #b51226;
+  color: white;
+}
+
+button[aria-pressed="true"] {
+  background-color: #333333;
+}
+
+footer {
+  padding: 20px 0;
+  border-top: 1px solid #dddddd;
+}
+
+@media (max-width: 900px) {
+  .news-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  label,
+  input,
+  select {
+    display: block;
+    width: 100%;
+  }
 }

@@ -14,7 +14,7 @@ function NewsCard({
         </a>
       </h3>
       <p>{description}</p>
-      <img src={imageUrl} alt={title} />
+      {imageUrl && <img src={imageUrl} alt={title} />}
 
       <button
         type="button"
@@ -22,7 +22,7 @@ function NewsCard({
         className="button bookmark"
         onClick={onBookmarkClick}
       >
-        {isBookmarked ? "Unbookmark" : "Bookmark"}
+        {isBookmarked ? "Hapus Bookmark" : "Bookmark"}
       </button>
     </article>
   );

@@ -5,15 +5,19 @@ export default function Bookmarks({ bookmarks, onBookmarkClick }) {
     <main>
       <h1>Berita Tersimpan</h1>
 
-      {bookmarks.length === 0 ? (
-        <p>Belum ada berita yang disimpan.</p>
-      ) : (
-        <NewsGrid
-          articles={bookmarks}
-          bookmarks={bookmarks}
-          onBookmarkClick={onBookmarkClick}
-        />
-      )}
+      <section aria-labelledby="saved-title">
+        <h2 id="saved-title">Daftar Berita Tersimpan</h2>
+
+        {bookmarks.length === 0 ? (
+          <p>Belum ada berita yang disimpan.</p>
+        ) : (
+          <NewsGrid
+            articles={bookmarks}
+            bookmarks={bookmarks}
+            onBookmarkClick={onBookmarkClick}
+          />
+        )}
+      </section>
     </main>
   );
 }

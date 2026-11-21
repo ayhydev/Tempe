@@ -47,6 +47,19 @@ function Home({ bookmarks, onBookmarkClick }) {
     <main>
       <h1>Berita Terkini Saat Ini</h1>
 
+      <label htmlFor="kategori">Kategori berita</label>
+      <select
+        id="kategori"
+        value={kategori}
+        onChange={(event) => setKategori(event.target.value)}
+      >
+        <option value="semua">Semua</option>
+        <option value="technology">Technology</option>
+        <option value="business">Business</option>
+        <option value="sports">Sports</option>
+        <option value="entertainment">Entertainment</option>
+      </select>
+
       <div className="headline-layout">
         <section aria-labelledby="headline-title">
           <h2 id="headline-title">Headline Utama</h2>
@@ -92,19 +105,6 @@ function Home({ bookmarks, onBookmarkClick }) {
           value={pencarian}
           onChange={(e) => setPencarian(e.target.value)}
         />
-
-        <label htmlFor="kategori">Kategori berita</label>
-        <select
-          id="kategori"
-          value={kategori}
-          onChange={(event) => setKategori(event.target.value)}
-        >
-          <option value="semua">Semua</option>
-          <option value="technology">Technology</option>
-          <option value="business">Business</option>
-          <option value="sports">Sports</option>
-          <option value="entertainment">Entertainment</option>
-        </select>
 
         {loading ? (
           <p>Memuat berita...</p>

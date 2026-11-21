@@ -1,6 +1,6 @@
 import NewsCard from "./NewsCard.jsx";
 
-export default function NewsGrid({ articles }) {
+export default function NewsGrid({ articles, bookmarks, onBookmarkClick }) {
   return (
     <div className="news-grid">
       {articles.map((article) => (
@@ -9,6 +9,11 @@ export default function NewsGrid({ articles }) {
           title={article.title}
           description={article.description}
           url={article.url}
+          imageUrl={article.imageUrl}
+          isBookmarked={bookmarks.some(
+            (bookmark) => bookmark.url === article.url,
+          )}
+          onBookmarkClick={() => onBookmarkClick(article)}
         />
       ))}
     </div>

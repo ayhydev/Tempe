@@ -2,7 +2,7 @@ import NewsGrid from "../components/NewsGrid.jsx";
 import MockNewsData from "../data/mockNews.js";
 import { useState } from "react";
 
-function Home() {
+function Home({ bookmarks, onBookmarkClick }) {
   const [kategori, setKategori] = useState("semua");
 
   const [pencarian, setPencarian] = useState("");
@@ -45,7 +45,11 @@ function Home() {
           <option value="entertainment">Entertainment</option>
         </select>
 
-        <NewsGrid articles={hasilBerita} />
+        <NewsGrid
+          articles={hasilBerita}
+          bookmarks={bookmarks}
+          onBookmarkClick={onBookmarkClick}
+        />
 
         {hasilBerita.length === 0 && <p>Berita tidak ditemukan.</p>}
       </section>

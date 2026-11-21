@@ -25,3 +25,5 @@ export const mockNews = [
     category: "entertainment",
   },
 ];
+
+export default mockNews;

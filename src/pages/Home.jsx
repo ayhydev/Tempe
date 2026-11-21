@@ -1,18 +1,15 @@
-import NewsCard from "../components/NewsCard.jsx";
+import NewsGrid from "../components/NewsGrid.jsx";
+import MockNewsData from "../data/mockNews.js";
 
 function Home() {
   return (
     <main>
-      <h1>Berita Terkini</h1>
+      <h1>Berita Terkini Saat Ini</h1>
 
       <section>
-        <h2 id="news-title">Daftar Berita</h2>
+        <h2 id="news-title">Berita Terbaru</h2>
 
-        <NewsCard
-          title="Contoh judul misalnya"
-          description="Ini contoh deskripsi"
-          url="https://example.com/news"
-        />
+        <NewsGrid articles={MockNewsData} />
       </section>
     </main>
   );

@@ -2,6 +2,8 @@ import NewsGrid from "../components/NewsGrid.jsx";
 import getNews from "../services/newsApi.js";
 import { useState, useEffect } from "react";
 
+import Sidebar from "../components/layout/Sidebar.jsx";
+
 function Home({ bookmarks, onBookmarkClick }) {
   const [kategori, setKategori] = useState("semua");
 
@@ -39,11 +41,47 @@ function Home({ bookmarks, onBookmarkClick }) {
     item.title.toLowerCase().includes(pencarian.toLowerCase()),
   );
 
+  const headline = berita[0];
+
   return (
     <main>
       <h1>Berita Terkini Saat Ini</h1>
 
-      <section>
+      <div className="headline-layout">
+        <section aria-labelledby="headline-title">
+          <h2 id="headline-title">Headline Utama</h2>
+
+          {loading ? (
+            <p>Memuat headline...</p>
+          ) : headline ? (
+            <article className="headline">
+              {!isFetchSuccess && <p>Data demo</p>}
+
+              {headline.imageUrl && (
+                <img src={headline.imageUrl} alt={headline.title} />
+              )}
+
+              <h3>
+                <a
+                  href={headline.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {headline.title}
+                </a>
+              </h3>
+
+              <p>{headline.description}</p>
+            </article>
+          ) : (
+            <p>Headline belum tersedia.</p>
+          )}
+        </section>
+
+        <Sidebar />
+      </div>
+
+      <section aria-labelledby="news-title">
         <h2 id="news-title">Berita Terbaru</h2>
 
         <label htmlFor="search">Cari Berita:</label>

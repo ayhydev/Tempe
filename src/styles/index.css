@@ -1,0 +1,23 @@
+:root {
+  --background: #ffffff;
+  --text: #222222;
+  --link: #b51226;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+a {
+  color: var(--link);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
